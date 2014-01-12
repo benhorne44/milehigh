@@ -35,6 +35,8 @@ end
 
 group :test do
   gem 'selenium-webdriver'
+  gem "capybara-webkit", "~> 1.1.1"
+  gem 'poltergeist'
   gem 'rspec-rails'
   gem 'simplecov', :require => false, :group => :test
   gem 'database_cleaner', :require => false, :group => :test

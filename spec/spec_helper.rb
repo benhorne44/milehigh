@@ -3,7 +3,10 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rails'
+require 'capybara/poltergeist'
 require 'capybara/rspec'
+
+Capybara.javascript_driver = :poltergeist
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
@@ -46,7 +49,7 @@ RSpec.configure do |config|
       :name => 'Ben Horne',
       :first_name => 'Ben',
       :last_name => 'Horne',
-      # :image => 'http://graph.facebook.com/1234567/picture?type=square',
+      :image => 'http://graph.facebook.com/1234567/picture?type=square',
       :urls => { :Facebook => 'http://www.facebook.com/jbloggs' },
       :location => 'Denver, Colorado',
       :verified => true
@@ -74,4 +77,11 @@ RSpec.configure do |config|
       }
     }
   })
+
+  Capybara.register_driver :poltergeist do |app|
+    Capybara::Poltergeist::Driver.new(app, :browser => :chrome,
+                                           :inspector => true)
+
+  end
+
 end

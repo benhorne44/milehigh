@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "review section" do
-  xit "appears" do
+  it "appears" do
     store = FactoryGirl.create(:store)
     visit root_path
     click_on 'Login With Facebook'
@@ -23,7 +23,8 @@ describe "review section" do
     fill_in('Title', :with => 'awwwwwwwwesohm')
     fill_in('review_body', :with => 'truuuuuly delish nug')
     find('#thumbs-up').click
-    # expect(page).to have_content("Your review of #{store2.name} was created.")
+    expect(page).to have_content("Your review of #{store2.name} was created.")
+    visit root_path
     within('#review-feed') do
       # Add user name and validation
       expect(page).to have_content('awwwwwwwwesohm')
