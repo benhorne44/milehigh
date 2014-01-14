@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/jetthoughts/yaml_db.git
+  revision: fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba
+  ref: fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba
+  specs:
+    yaml_db (0.2.3)
+
+GIT
   remote: git://github.com/nixme/jazz_hands.git
   revision: 5e4b48f145883ecb14b55bf04eacc28ac9662676
   branch: bring-your-own-debugger
@@ -89,6 +96,17 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (>= 0.0.23)
+    capistrano-bundler (1.1.1)
+      capistrano (~> 3.0)
+      sshkit (>= 1.2.0)
+    capistrano-rails (1.1.0)
+      capistrano (>= 3.0.0)
+      capistrano-bundler (>= 1.0.0)
+    capistrano-rbenv (2.0.1)
+      capistrano (~> 3.0)
+      sshkit (~> 1.3)
+    capistrano-rvm (0.0.3)
+      capistrano
     capybara (2.2.0)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -97,6 +115,8 @@ GEM
       xpath (~> 2.0)
     celluloid (0.15.2)
       timers (~> 1.1.0)
+    childprocess (0.3.9)
+      ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -120,6 +140,11 @@ GEM
       ffi (>= 1.3.0)
       mime-types (~> 1.18)
     execjs (2.0.2)
+    factory_girl (4.3.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.3.0)
+      factory_girl (~> 4.3.0)
+      railties (>= 3.0.0)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
     faraday_middleware (0.9.0)
@@ -127,6 +152,7 @@ GEM
     fastercsv (1.5.5)
     ffi (1.9.3)
     formatador (0.2.4)
+    fuzzy_match (2.0.4)
     gh (0.13.0)
       addressable
       backports
@@ -228,6 +254,7 @@ GEM
     pg (0.17.1)
     polyglot (0.3.3)
     posix-spawn (0.3.8)
+    pr_geohash (1.0.0)
     pry (0.9.12.4)
       coderay (~> 1.0)
       method_source (~> 0.8)
@@ -267,6 +294,11 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.0.2)
       sprockets-rails (~> 2.0.0)
+    rails_12factor (0.0.2)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.2)
+    rails_stdout_logging (0.0.3)
     railties (4.0.2)
       actionpack (= 4.0.2)
       activesupport (= 4.0.2)
@@ -283,6 +315,8 @@ GEM
     rolling_paper (0.0.2)
       faraday
       json
+    rsolr (1.0.9)
+      builder (>= 2.1.2)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -304,11 +338,20 @@ GEM
       sexp_processor (~> 4.0)
     ruby_parser (3.2.2)
       sexp_processor (~> 4.1)
+    rubyzip (1.1.0)
+    rvm1-capistrano3 (1.1.1)
+      capistrano (~> 3.0)
+      sshkit (>= 1.2)
     sass (3.2.13)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
+    selenium-webdriver (2.39.0)
+      childprocess (>= 0.2.5)
+      multi_json (~> 1.0)
+      rubyzip (~> 1.0)
+      websocket (~> 1.0.4)
     sexp_processor (4.4.1)
     simplecov (0.8.2)
       docile (~> 1.1.0)
@@ -332,6 +375,14 @@ GEM
       net-scp (>= 1.1.2)
       net-ssh
       term-ansicolor
+    sunspot (2.1.0)
+      pr_geohash (~> 1.0)
+      rsolr (~> 1.0.7)
+    sunspot_rails (2.1.0)
+      nokogiri
+      rails (>= 3)
+      sunspot (= 2.1.0)
+    sunspot_solr (2.1.0)
     temple (0.6.7)
     term-ansicolor (1.2.2)
       tins (~> 0.8)
@@ -379,10 +430,15 @@ DEPENDENCIES
   binding_of_caller
   brakeman
   cane
-  capistrano
+  capistrano (~> 3.0.0)
+  capistrano-rails
+  capistrano-rbenv (~> 2.0)
+  capistrano-rvm
   capybara
   coffee-rails (~> 4.0.0)
   database_cleaner
+  factory_girl_rails (~> 4.0)
+  fuzzy_match
   guard
   guard-brakeman
   guard-cane
@@ -399,10 +455,16 @@ DEPENDENCIES
   puma
   quiet_assets
   rails (= 4.0.2)
+  rails_12factor
   reek
   rolling_paper
   rspec-rails
+  rvm1-capistrano3
   sass-rails (~> 4.0.0)
+  selenium-webdriver
   simplecov
+  sunspot_rails
+  sunspot_solr
   travis
   uglifier (>= 1.3.0)
+  yaml_db!
